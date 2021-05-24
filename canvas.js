@@ -23,3 +23,26 @@ c.beginPath();
 c.lineWidth = 3;
 c.arc(150, 70, 50, 0, Math.PI * 2, false);//outline setup
 c.stroke();
+
+//draw X
+var mouseX, mouseY;
+
+canvas.addEventListener("mouseup", mouseUp, false);
+
+function drawX(x, y) {
+    c.beginPath();
+    
+    c.moveTo(x - 20, y - 20);
+    c.lineTo(x + 20, y + 20);
+    c.stroke();
+
+    c.moveTo(x + 20, y - 20);
+    c.lineTo(x - 20, y + 20);
+    c.stroke();
+}
+
+function mouseUp(e) {
+    mouseX = e.pageX - canvas.offsetLeft;
+    mouseY = e.pageY - canvas.offsetTop;
+    drawX(mouseX, mouseY);
+}
